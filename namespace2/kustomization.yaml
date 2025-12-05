@@ -1,3 +1,5 @@
 namespace: namespace2
+destination:
+  namespace: namespace2
 resources:
   - argo.yaml
