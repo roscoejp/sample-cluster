@@ -15,3 +15,7 @@ spec:
     path: bootstrap_templates
     repoURL: https://github.com/roscoejp/sample-cluster.git
     targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - PrunePropagationPolicy=undefined
+      - CreateNamespace=true
