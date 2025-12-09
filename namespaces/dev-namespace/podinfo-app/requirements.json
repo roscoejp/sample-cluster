@@ -3,7 +3,7 @@
     "chart": {
       "repoURL": "https://github.com/roscoejp/sample-config.git",
       "revision": "main",
-      "path": "components/sample_chart"
+      "path": "components/sample-chart"
     },
     "values": {
       "repoURL": "https://github.com/roscoejp/sample-config.git",
@@ -14,7 +14,7 @@
     "chart": {
       "repoURL": "https://github.com/roscoejp/sample-config.git",
       "revision": "main",
-      "path": "components/sample_chart"
+      "path": "components/sample-chart"
     },
     "values": {
       "repoURL": "https://github.com/roscoejp/sample-config.git",
