@@ -36,7 +36,7 @@ spec:
               prefix: "{{.path.basenameNormalized}}"
               suffix: "{{values.component_type}}"
             valueFiles:
-              - $external_values/{{path.basenameNormalized}}/requirements/{{values.component_type}}-values.yaml
+              - $external_values/{{.path.basenameNormalized}}/requirements/{{values.component_type}}-values.yaml
       syncPolicy:
         syncOptions:
           - PrunePropagationPolicy=undefined
