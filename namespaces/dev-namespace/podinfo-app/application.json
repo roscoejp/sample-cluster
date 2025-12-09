@@ -2,7 +2,7 @@
   "application": {
     "chart": {
       "repoURL": "https://github.com/stefanprodan/podinfo.git",
-      "revision": "main",
+      "revision": "master",
       "path": "charts/podinfo"
     },
     "values": {
