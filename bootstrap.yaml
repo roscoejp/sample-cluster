@@ -13,5 +13,5 @@ spec:
   project: default
   source:
     path: bootstrap_templates
-    repoURL: https://github.com/roscoejp/sample-config.git
+    repoURL: https://github.com/roscoejp/sample-cluster.git
     targetRevision: HEAD
