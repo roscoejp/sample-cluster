@@ -1,1 +1,1 @@
-# flux-sample-cluster
+# sample-cluster

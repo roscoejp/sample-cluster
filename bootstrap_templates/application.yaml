@@ -1,0 +1,39 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: application
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: https://github.com/roscoejp/sample-config.git
+        revision: HEAD
+        # https://argo-cd.readthedocs.io/en/release-2.9/operator-manual/applicationset/Generators-Git/#git-generator-files
+        files:
+          - path: "namespaces/**/application.json"
+        values:
+          component_type: application
+  template:
+    metadata:
+      name: "{{path.basenameNormalized}}-{{values.component_type}}"
+    spec:
+      project: default
+      sources:
+        - repoURL: "{{application.values.repoURL}}"
+          targetRevision: "{{application.values.revision}}"
+          ref: external_values # Allows us to reference repo w/ templating
+        - repoURL: "{{application.chart.repoURL}}"
+          path: "{{application.chart.path}}"
+          targetRevision: "{{application.chart.revision}}"
+          helm:
+            # https://argo-cd.readthedocs.io/en/latest/user-guide/helm/#helm-value-precedence
+            values: |
+              prefix: "{{path.basenameNormalized}}"
+              suffix: "{{values.component_type}}"
+            valueFiles:
+              - $external_values/{{path.basenameNormalized}}/values.yaml
+      destination:
+        server: https://kubernetes.default.svc # ArgoCD's own cluster
+        namespace: "{{path[1]}}" # should be /namespaces[0]/namespace1[1]
