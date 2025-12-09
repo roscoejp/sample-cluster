@@ -17,7 +17,7 @@ spec:
           component_type: application
   template:
     metadata:
-      name: "{{path.basenameNormalized}}-{{values.component_type}}"
+      name: "{{.path.basenameNormalized}}-{{values.component_type}}"
     spec:
       destination:
         server: https://kubernetes.default.svc # ArgoCD's own cluster
@@ -33,7 +33,7 @@ spec:
           helm:
             # https://argo-cd.readthedocs.io/en/latest/user-guide/helm/#helm-value-precedence
             values: |
-              prefix: "{{path.basenameNormalized}}"
+              prefix: "{{.path.basenameNormalized}}"
               suffix: "{{values.component_type}}"
             valueFiles:
               - $external_values/{{.path.basenameNormalized}}/values.yaml
