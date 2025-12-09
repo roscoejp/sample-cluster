@@ -8,7 +8,7 @@ spec:
   goTemplate: true
   generators:
     - git:
-        repoURL: https://github.com/roscoejp/sample-config.git
+        repoURL: https://github.com/roscoejp/sample-cluster.git
         revision: HEAD
         # https://argo-cd.readthedocs.io/en/release-2.9/operator-manual/applicationset/Generators-Git/#git-generator-files
         files:
