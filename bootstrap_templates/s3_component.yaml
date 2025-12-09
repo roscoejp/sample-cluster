@@ -17,7 +17,7 @@ spec:
           component_type: s3
   template:
     metadata:
-      name: "{{index .path.segments 1}}-{{.values.component_type}}"
+      name: "{{index .path.segments 1}}-{{.path.basenameNormalized}}-{{.values.component_type}}"
     spec:
       destination:
         server: https://kubernetes.default.svc # ArgoCD's own cluster
