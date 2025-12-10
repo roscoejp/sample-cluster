@@ -12,7 +12,9 @@ spec:
         revision: HEAD
         # https://argo-cd.readthedocs.io/en/release-2.9/operator-manual/applicationset/Generators-Git/#git-generator-files
         files:
-          - path: "namespaces/**/requirements.json"
+          - path: namespaces/**/infrastructure.json
+          - path: namespaces/**/requirements.json
+          - path: namespaces/**/application.json
   strategy:
     type: RollingSync
     rollingSync:
@@ -22,7 +24,7 @@ spec:
         - matchExpressions:
             - key: tier
               operator: In
-              values: ["infra"]
+              values: ["infrastructure"]
           maxUpdate: 1
         - matchExpressions:
             - key: tier
@@ -36,7 +38,7 @@ spec:
     metadata:
       name: "{{index .path.segments 1}}-{{.path.basenameNormalized}}"
       labels:
-        tier: '{{ .path.filename | trimSuffix ".json" }}'
+        tier: '{{ trimSuffix ".json" .path.filename }}'
     spec:
       destination:
         server: https://kubernetes.default.svc # ArgoCD's own cluster
