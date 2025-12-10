@@ -36,7 +36,7 @@ spec:
     metadata:
       name: "{{index .path.segments 1}}-{{.path.basenameNormalized}}"
       labels:
-        tier: "{{ .path.filename | trimSuffix '.json' }}"
+        tier: '{{ .path.filename | trimSuffix ".json" }}'
     spec:
       destination:
         server: https://kubernetes.default.svc # ArgoCD's own cluster
